@@ -33,9 +33,9 @@ public class JwtService {
         this.userRepository = userRepository;
     }
 
-    public String generateToken(String email) {
+    public String generateToken(String username) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("uid", userRepository.findByEmail(email).getUId());
+        claims.put("uid", userRepository.findByUsername(username).getUserId());
 
         Key secretKey = jwtKeyService.getSecretKey();
 
@@ -43,7 +43,7 @@ public class JwtService {
 
         return Jwts.builder()
                 .claims(claims)
-                .subject(email)
+                .subject(username)
                 .issuedAt(new Date())
                 .expiration(new Date(new Date().getTime() + 1000 * 60 * 15)) //15min
                 .signWith(secretKey)
