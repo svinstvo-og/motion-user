@@ -35,7 +35,7 @@ public class JwtService {
 
     public String generateToken(String username) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("uid", userRepository.findByUsername(username).getUserId());
+        claims.put("uid", userRepository.findByUsername(username).get().getUserId());
 
         Key secretKey = jwtKeyService.getSecretKey();
 
