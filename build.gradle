@@ -29,9 +29,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.auth0:java-jwt:4.5.0'
 
-	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '4.1.0'
+//	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '4.2.1'
 
-	implementation("org.springframework.cloud:spring-cloud-starter-loadbalancer")
+//	implementation("org.springframework.cloud:spring-cloud-starter-loadbalancer")
 
 	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.12.5'
 	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.12.5'

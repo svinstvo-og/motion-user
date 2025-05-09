@@ -39,7 +39,7 @@ public class AuthService {
     }
 
     @Transactional
-    public void register(AuthRequest request) {
+    public void signup(AuthRequest request) {
         if (userRepository.findByUsername(request.getUsername()) != null) {
             throw new BadCredentialsException("Username is already in use");
         }
