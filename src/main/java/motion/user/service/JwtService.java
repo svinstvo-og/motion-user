@@ -35,7 +35,7 @@ public class JwtService {
 
     public String generateToken(String username) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("uid", userRepository.findByUsername(username).get().getUserId());
+        claims.put("uuid", userRepository.findByUsername(username).get().getUserId());
 
         Key secretKey = jwtKeyService.getSecretKey();
 
@@ -53,6 +53,11 @@ public class JwtService {
     public String extractEmail(String token) {
         // extract the username from jwt token
         return extractClaim(token, Claims::getSubject);
+    }
+
+    public UUID extractUuid(String token) {
+        Claims claims = extractAllClaims(token);
+        return UUID.fromString(claims.get("uuid").toString());
     }
 
     private <T> T extractClaim(String token, Function<Claims, T> claimResolver) {
